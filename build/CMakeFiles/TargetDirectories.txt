@@ -1,0 +1,3 @@
+/home/dishant/Desktop/travel-guide-bot/build/CMakeFiles/travel_guide_bot.dir
+/home/dishant/Desktop/travel-guide-bot/build/CMakeFiles/edit_cache.dir
+/home/dishant/Desktop/travel-guide-bot/build/CMakeFiles/rebuild_cache.dir
