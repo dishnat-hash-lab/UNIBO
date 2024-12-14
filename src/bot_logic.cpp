@@ -4,12 +4,12 @@
 
 std::string BotLogic::handleUserMessage(const std::string& message) {
     Database db;
-    PathFinding pathFinder;
+    Pathfinding pathFinder(locations, edges);
 
     size_t delimiter = message.find('-');
-    if (delimiter == std::string::npos) {
-        return "⚠️ Invalid input! Please use the format `start-end` (e.g., Library-Cafeteria).";
-    }
+    // if (delimiter == std::string::npos) {
+    //     return "⚠️ Invalid input! Please use the format `start-end` (e.g., Library-Cafeteria).";
+    // }
 
     std::string start = message.substr(0, delimiter);
     std::string end = message.substr(delimiter + 1);
@@ -21,7 +21,7 @@ std::string BotLogic::handleUserMessage(const std::string& message) {
     //     return "⚠️ Invalid locations! Please check your input.";
     // }
 
-    auto route = pathFinder.findShortestPath(startCoords, endCoords);
+    auto route = pathFinder.findShortestPath(start, end);
     double distance = pathFinder.calculateDistance(route);
 
     // Google Maps link

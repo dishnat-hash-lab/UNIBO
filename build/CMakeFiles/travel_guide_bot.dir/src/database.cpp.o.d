@@ -122,4 +122,8 @@ CMakeFiles/travel_guide_bot.dir/src/database.cpp.o: \
  /usr/include/c++/13/bits/stl_map.h \
  /usr/include/c++/13/bits/stl_multimap.h \
  /usr/include/c++/13/bits/erase_if.h /usr/include/c++/13/utility \
- /usr/include/c++/13/bits/stl_relops.h
+ /usr/include/c++/13/bits/stl_relops.h /usr/include/c++/13/vector \
+ /usr/include/c++/13/bits/stl_uninitialized.h \
+ /usr/include/c++/13/bits/stl_vector.h \
+ /usr/include/c++/13/bits/stl_bvector.h \
+ /usr/include/c++/13/bits/vector.tcc
