@@ -34,14 +34,14 @@ std::vector<std::string> Pathfinding::findShortestPath(const std::string& start,
     std::priority_queue<std::pair<double, std::string>,
                         std::vector<std::pair<double, std::string>>,
                         std::greater<>> pq;
-
+    // Step 1: Initialize distances and priority queue
     for (const auto& node : locations) {
         distances[node.first] = std::numeric_limits<double>::infinity();
     }
     distances[start] = 0.0;
 
     pq.emplace(0.0, start);
-
+    // Step 2: Dijkstra's Algorithm loop
     while (!pq.empty()) {
         auto [currentDistance, currentNode] = pq.top();
         pq.pop();

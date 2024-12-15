@@ -17,9 +17,9 @@ std::string BotLogic::handleUserMessage(const std::string& message) {
     auto startCoords = db.getCoordinates(start);
     auto endCoords = db.getCoordinates(end);
 
-    // if (startCoords == std::make_pair(0.0, 0.0) || endCoords == std::make_pair(0.0, 0.0)) {
-    //     return "⚠️ Invalid locations! Please check your input.";
-    // }
+    if (startCoords == std::make_pair(0.0, 0.0) || endCoords == std::make_pair(0.0, 0.0)) {
+        return "⚠️ Invalid locations! Please check your input.";
+    }
 
     auto route = pathFinder.findShortestPath(start, end);
     double distance = pathFinder.calculateDistance(route);
@@ -33,7 +33,7 @@ std::string BotLogic::handleUserMessage(const std::string& message) {
     for (const auto& point : route) {
         response += point + " -> ";
     }
-    response += "\nTotal distance: " + std::to_string(distance) + " km\n";
+    response += "\nTotal distance: " + std::to_string(distance) + " m\n";
     response += "For directions, click here: " + googleMapsLink;
 
     return response;
