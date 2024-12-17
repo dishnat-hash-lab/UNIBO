@@ -6,10 +6,20 @@ std::string BotLogic::handleUserMessage(const std::string& message) {
     Database db;
     Pathfinding pathFinder(locations, edges);
 
+    std::vector<std::string> funMessages = {
+    "🚶 Walking is great for health! Keep exploring.",
+    "✨ Did you know? This campus has 10+ acres of greenery!",
+    "🎓 Fun fact: The library has over 1 lakh books!"
+    };
     size_t delimiter = message.find('-');
-    // if (delimiter == std::string::npos) {
-    //     return "⚠️ Invalid input! Please use the format `start-end` (e.g., Library-Cafeteria).";
-    // }
+    if (message=="/start" || message=="/help")
+    {
+        return funMessages[rand() % funMessages.size()];
+    }
+    
+    if (delimiter == std::string::npos) {
+        return "⚠️ Invalid input! Please use the format `start-end` (e.g., Library-).";
+    }
 
     std::string start = message.substr(0, delimiter);
     std::string end = message.substr(delimiter + 1);
@@ -22,7 +32,7 @@ std::string BotLogic::handleUserMessage(const std::string& message) {
     }
 
     auto route = pathFinder.findShortestPath(start, end);
-    double distance = pathFinder.calculateDistance(route);
+    int distance = pathFinder.calculateDistance(route);
 
     // Google Maps link
     std::string googleMapsLink = "https://www.google.com/maps/dir/" +
@@ -36,16 +46,10 @@ std::string BotLogic::handleUserMessage(const std::string& message) {
     response += "\nTotal distance: " + std::to_string(distance) + " m\n";
     response += "For directions, click here: " + googleMapsLink;
 
+
+    response += "\n\n" + funMessages[rand() % funMessages.size()];
+
     return response;
 }
-
-
-std::vector<std::string> funMessages = {
-    "🚶 Walking is great for health! Keep exploring.",
-    "✨ Did you know? This campus has 200+ acres of greenery!",
-    "🎓 Fun fact: The library has over 1 lakh books!"
-};
-
-std::string randomFunMessage = funMessages[rand() % funMessages.size()];
 
 
